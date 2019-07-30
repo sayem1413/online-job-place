@@ -36,6 +36,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('company_home') }}">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('company_profile') }}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('company_job_post') }}">Job Post Form</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

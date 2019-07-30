@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('new-company', 'Company\RegisterController@showRegistrationForm')->name('new_company_add');
@@ -32,6 +30,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('company')->group(function (){
     Route::group(['middleware'=>['company']],function(){
         Route::get('/home', 'Company\HomeController@index')->name('company_home');
+        Route::get('/profile', 'Company\ProfileController@index')->name('company_profile');
+        Route::post('/profile-save', 'Company\ProfileController@storeProfile')->name('company_profile_save');
+        Route::get('/job-post', 'Company\JobPostController@index')->name('company_job_post');
+        Route::post('/job-post-save', 'Company\JobPostController@storeJobPost')->name('company_job_post_save');
     });
 });
 
