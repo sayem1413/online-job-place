@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\JobPost;
+use App\JobApplicantion;
+use App\User;
 
 class JobPostController extends Controller
 {
@@ -44,5 +46,21 @@ class JobPostController extends Controller
         //     'message' => 'User Profile updated Successfully!!',
         // ], 200);
         return redirect('/company/home');
+    }
+
+    public function getAllJobPosts(){
+        $allJobPosts = JobPost::where('user_id', auth()->user()->id)->get();
+        return view('company.allJobPosts', [ 'allJobPosts' => $allJobPosts ]);
+    }
+
+    public function allApplicants($id){
+        $allApplicants = JobApplicantion::where('job_post_id', $id)->get();
+        $allApplicantDetails = [];
+        foreach($allApplicants as $applicantId){
+            $applicantDetails = User::where('id',$applicantId->user_id)->first();
+            // dd($applicantDetails->first_name);
+            $allApplicantDetails = [$applicantDetails];
+        }
+        return view('company.showAllApplicants',[ 'allApplicantDetails' => $allApplicantDetails ]);
     }
 }

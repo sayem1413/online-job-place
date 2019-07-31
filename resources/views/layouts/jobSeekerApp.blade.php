@@ -34,16 +34,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('company_home') }}">Home</a>
+                            <a class="nav-link" href="{{ route('jobseeker_home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('company_profile') }}">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('company_job_post') }}">Job Post Form</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('all_job_posts') }}">Your All Job Posts</a>
+                            <a class="nav-link" href="{{ route('jobseeker_profile') }}">Profile</a>
                         </li>
                     </ul>
 

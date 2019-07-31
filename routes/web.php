@@ -34,12 +34,17 @@ Route::prefix('company')->group(function (){
         Route::post('/profile-save', 'Company\ProfileController@storeProfile')->name('company_profile_save');
         Route::get('/job-post', 'Company\JobPostController@index')->name('company_job_post');
         Route::post('/job-post-save', 'Company\JobPostController@storeJobPost')->name('company_job_post_save');
+        Route::get('/all-job-posts', 'Company\JobPostController@getAllJobPosts')->name('all_job_posts');
+        Route::get('/job-applicants/{id}', 'Company\JobPostController@allApplicants')->name('all_applicants');
     });
 });
 
 Route::prefix('jobseeker')->group(function (){
     Route::group(['middleware'=>['jobseeker']],function(){
         Route::get('/home', 'JobSeeker\HomeController@index')->name('jobseeker_home');
+        Route::get('/jobseeker-profile', 'JobSeeker\ProfileController@index')->name('jobseeker_profile');
+        Route::post('/jobseeker-profile-save', 'JobSeeker\ProfileController@storeProfile')->name('company_profile_save');
+        Route::get('/job-apply/{id}', 'JobSeeker\JobApplyController@index')->name('apply_job');
     });
 });
 

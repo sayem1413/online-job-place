@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Enumeration\RoleTypes;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyMiddleware
 {
@@ -16,9 +17,9 @@ class CompanyMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->role == RoleTypes::COMPANY){
+        if(Auth::check() && auth()->user()->role == RoleTypes::COMPANY){
             return $next($request);
         }
-        return redirect(‘home’)->with(‘error’,'You have no access');
+        return redirect()->route('company_login_form');
     }
 }
